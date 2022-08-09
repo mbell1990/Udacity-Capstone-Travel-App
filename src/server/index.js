@@ -40,9 +40,11 @@ app.get("/", function (req, res) {
   res.send(mockAPIResponse);
 });
 
-// Post route
+// Post route to recieve request  - set up post in client using fetch to send data to this post
+// request holds all data that is involved in request
+// response used to send things back to the client
 
-app.post("/", async (req, res) => {
+app.post("/all", async (req, res) => {
   const res = await fetch(
     `${baseURL}${API_KEY}&of=json&lang=en&model=general&url=${req.body.url}`
   );

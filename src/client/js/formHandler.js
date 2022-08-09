@@ -3,6 +3,8 @@ function handleSubmit(event) {
 
   // check what text was put into the form field
   let formText = document.getElementById("name").value;
+  Client.checkForName(formText);
+  console.log("::: Form Submitted :::");
   analyseText(formText); // change
 }
 
@@ -15,7 +17,7 @@ const analyseText = async (url = "", data = {}) => {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(data), // body data type must match "Content-Type" header
+    body: JSON.stringify(data), // body data type must match "Content-Type" header. Body is where you package the data request.
   })
     .then((res) => res.json())
     .then((data) => updateUI(data))
