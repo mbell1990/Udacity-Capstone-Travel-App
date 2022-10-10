@@ -8,6 +8,12 @@ module.exports = {
   mode: "development",
   devtool: "source-map",
   stats: "verbose",
+  output: {
+    path: path.join(__dirname, "dist"),
+    filename: "bundle-[hash].min.js",
+    libraryTarget: "var",
+    library: "Client",
+  },
   module: {
     rules: [
       {

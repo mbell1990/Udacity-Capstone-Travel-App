@@ -26,26 +26,28 @@ app.use(express.static("dist"));
 
 console.log(__dirname);
 
+// get request
+
 app.get("/", function (req, res) {
   res.sendFile("dist/index.html");
   res.sendFile(path.resolve("src/client/views/index.html"));
 });
 
 // designates what port the app will listen to for incoming requests
-app.listen(8080, function () {
-  console.log("Example app listening on port 8080!");
+app.listen(8081, function () {
+  console.log(`Example app listening on port 8081!`);
 });
 
-app.get("/", function (req, res) {
-  res.send(mockAPIResponse);
-});
+// app.get("/", function (req, res) {
+//   res.send(mockAPIResponse);
+// });
 
 // Post route to recieve request  - set up post in client using fetch to send data to this post
 // request holds all data that is involved in request
 // response used to send things back to the client
 
-app.post("/all", async (req, res) => {
-  const res = await fetch(
+app.post("/api", async (req, res) => {
+  const response = await fetch(
     `${baseURL}${API_KEY}&of=json&lang=en&model=general&url=${req.body.url}`
   );
   try {

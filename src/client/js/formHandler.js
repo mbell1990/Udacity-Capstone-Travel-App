@@ -2,23 +2,27 @@ function handleSubmit(event) {
   event.preventDefault();
 
   // check what text was put into the form field
-  let formText = document.getElementById("name").value;
-  Client.checkForName(formText);
+  let url = document.getElementById("name").value;
+  //Client.checkURL(url);
   console.log("::: Form Submitted :::");
-  analyseText(formText); // change
+  analyseText();
 }
 
 // Post request to get data from API and send to server
 
 const analyseText = async (url = "", data = {}) => {
-  const res = await fetch(url, {
-    method: "POST", // *GET, POST, PUT, DELETE, etc.
-    credentials: "same-origin",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data), // body data type must match "Content-Type" header. Body is where you package the data request.
-  })
+  const res = await fetch(
+    "http://localhost:8081/",
+
+    {
+      method: "POST", // *GET, POST, PUT, DELETE, etc.
+      credentials: "same-origin",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data), // body data type must match "Content-Type" header. Body is where you package the data request.
+    }
+  )
     .then((res) => res.json())
     .then((data) => updateUI(data))
     .catch((error) => {
@@ -34,7 +38,7 @@ const analyseText = async (url = "", data = {}) => {
 // Update the UI
 
 const updateUI = async () => {
-  const request = await fetch("/");
+  const request = await fetch("/api");
   try {
     const allData = await request.json();
     document.getElementById(
