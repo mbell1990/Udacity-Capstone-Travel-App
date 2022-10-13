@@ -37,7 +37,7 @@ const analyseText = async (data = {}) => {
 
 // Update the UI
 
-const updateUI = async () => {
+const updateUI = async (data) => {
   const request = await fetch("/api");
   try {
     const allData = await request.json();

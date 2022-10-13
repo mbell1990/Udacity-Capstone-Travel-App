@@ -12,6 +12,7 @@ const app = express();
 
 const bodyParser = require("body-parser");
 
+//const fetch = require("node-fetch");
 /* Middleware*/
 //Here we are configuring express to use body-parser as middle-ware.
 app.use(bodyParser.urlencoded({ extended: false }));

@@ -17,6 +17,8 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.17.1",
+    "fetch": "^1.1.0",
+    "node-fetch": "^3.2.10",
     "webpack": "^4.35.3",
     "webpack-cli": "^3.3.5"
   },
