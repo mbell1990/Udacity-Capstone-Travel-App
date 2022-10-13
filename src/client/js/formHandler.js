@@ -2,17 +2,17 @@ function handleSubmit(event) {
   event.preventDefault();
 
   // check what text was put into the form field
-  let url = document.getElementById("name").value;
-  //Client.checkURL(url);
+  let formText = document.getElementById("name").value;
+  Client.checkForName(formText);
   console.log("::: Form Submitted :::");
-  analyseText();
+  analyseText({ url: formText });
 }
 
 // Post request to get data from API and send to server
 
-const analyseText = async (url = "", data = {}) => {
-  const res = await fetch(
-    "http://localhost:8081/",
+const analyseText = async (data = {}) => {
+  const response = await fetch(
+    "http://localhost:8081/api",
 
     {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
