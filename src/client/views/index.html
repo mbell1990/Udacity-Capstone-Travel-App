@@ -1,56 +1,85 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <title>Test</title>
-    <!-- <link rel="stylesheet" href="/styles/resets.css" />
-    <link rel="stylesheet" href="/styles/base.css" />
-    <link rel="stylesheet" href="/styles/header.css" />
-    <link rel="stylesheet" href="/styles/form.css" />
-    <link rel="stylesheet" href="/styles/footer.css" /> -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600"
+      rel="stylesheet"
+    />
+
+    <title>Travel App</title>
   </head>
-
   <body>
-    <header>
-      <div class="">Logo</div>
-      <div class="">navigation</div>
-    </header>
+    <div class="container">
+      <header class="header">
+        <nav class="user-nav">
+          <div class="user-nav__icon-box"></div>
+          <div class="user-nav__icon-box"></div>
+          <div class="user-nav__user"></div>
+        </nav>
+      </header>
 
-    <main>
-      <section>
-        <form class="" onsubmit="return Client.handleSubmit(event)">
-          <input
-            id="name"
-            type="text"
-            name="input"
-            value=""
-            placeholder="Name"
-          />
-          <input
-            type="submit"
-            name=""
-            value="submit"
-            onclick="return Client.handleSubmit(event)"
-            onsubmit="return Client.handleSubmit(event)"
-          />
-        </form>
-      </section>
+      <main class="hotel-view">
+        <div class="overview">
+          <h1 class="overview__heading">🌍 Travel App</h1>
+        </div>
 
-      <section>
-        <strong>Form Results:</strong>
-        <div id="polarity"></div>
-        <div id="polarity-confidence"></div>
-        <div id="subjectivity"></div>
-        <div id="subjectivity-confidence"></div>
-        <div id="text"></div>
-      </section>
-    </main>
+        <div class="detail">
+          <div class="description">
+            <p class="paragraph">
+              This is a travel app planner developed as part of my Udacity Front
+              End Nanodegree. The app uses 3 different API's to gather
+              information about the location a user selects and posts results
+              for the selected date.
+            </p>
+            <p class="paragraph">
+              To gather weather information on a specific location, use the form
+              on the right hand side.
+            </p>
+          </div>
 
-    <footer>
-      <p>This is a footer</p>
-    </footer>
+          <div class="planner">
+            <div>
+              <label for="city">I am travelling to: </label>
+              <input id="city" placeholder="Enter destination city here" />
+            </div>
+            <div class="departure-date">
+              <label for="departure-date">Departing on: </label>
+              <input type="date" id="departureDate" />
+            </div>
+            <button
+              onClick="document.getElementById('focus').scrollIntoView()"
+              id="generate"
+              type="submit"
+            >
+              Submit
+            </button>
+          </div>
+        </div>
 
-    <!-- <script>
+        <div class="destination">
+          <h2 class="destination__title">Destination Information</h2>
+
+          <div class="destination__results">
+            <div class="destination__image">
+              <img id="image" />
+            </div>
+            <div id="focus" class="destination__info">
+              <div id="trip-days"></div>
+              <div id="city-name"></div>
+              <div id="high-temp"></div>
+              <div id="low-temp"></div>
+              <div id="description"></div>
+              <img id="weather-icon" />
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script>
       // Check that service workers are supported
       if ("serviceWorker" in navigator) {
         // Use the window load event to keep the page load performant
@@ -58,6 +87,6 @@
           navigator.serviceWorker.register("/service-worker.js");
         });
       }
-    </script> -->
+    </script>
   </body>
 </html>

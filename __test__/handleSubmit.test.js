@@ -1,4 +1,4 @@
-import { handleSubmit } from "../src/client/js/formHandler";
+import { performAction } from "../src/client/js/formHandler";
 
 // The describe() function takes two arguments - a string description, and a test suite as a callback function.
 // A test suite may contain one or more related tests
@@ -6,6 +6,6 @@ import { handleSubmit } from "../src/client/js/formHandler";
 describe("Testing the submit functionality", () => {
   // The test() function has two arguments - a string description, and an actual test as a callback function.
   test("Testing the handleSubmit() function", () => {
-    expect(handleSubmit).toBeDefined();
+    expect(performAction).toBeDefined();
   });
 });

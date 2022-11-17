@@ -1,10 +1,13 @@
-import { checkForName } from "./js/nameChecker";
-import { handleSubmit } from "./js/formHandler";
+import { performAction } from "./js/formHandler";
 
-import "./styles/resets.scss";
 import "./styles/base.scss";
-import "./styles/footer.scss";
-import "./styles/form.scss";
-import "./styles/header.scss";
+import "./styles/components.scss";
+import "./styles/layout.scss";
 
-export { handleSubmit, checkForName };
+//Load weather icons
+function importAll(r) {
+  return r.keys().map(r);
+}
+importAll(require.context("./media/weatherbit_icons", false, /\.(svg)$/));
+
+export { performAction };

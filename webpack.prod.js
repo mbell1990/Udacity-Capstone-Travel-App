@@ -6,8 +6,8 @@ module.exports = {
   entry: "./src/client/index.js",
   mode: "production",
   output: {
-    path: path.join(__dirname, "dist"),
-    filename: "bundle-[hash].min.js",
+    //path: path.join(__dirname, "dist"),
+    //filename: "bundle-[hash].min.js",
     libraryTarget: "var",
     library: "Client",
   },
@@ -22,6 +22,19 @@ module.exports = {
       {
         test: /\.scss$/,
         use: ["style-loader", "css-loader", "sass-loader"],
+      },
+      {
+        ///([a-z] [0-9] {2} [a-z])\.(svg)$/i,
+        test: /\.(png|jpg|gif|svg)$/i,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name].[ext]",
+              outputPath: "./media/weatherbit_icons",
+            },
+          },
+        ],
       },
     ],
   },

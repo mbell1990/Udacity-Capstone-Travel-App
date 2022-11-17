@@ -1,18 +1,16 @@
-const baseURL = "https://api.meaningcloud.com/sentiment-2.1?key=";
-const API_KEY = process.env.API_KEY;
+//const dotenv = require("dotenv");
+//dotenv.config();
 
-const dotenv = require("dotenv");
-dotenv.config();
+projectData = [];
 
-var path = require("path");
+//const fetch = require("node-fetch");
+//var path = require("path");
 const express = require("express");
-const mockAPIResponse = require("./mockAPI.js");
+//const mockAPIResponse = require("./mockAPI.js");
 
 const app = express();
 
 const bodyParser = require("body-parser");
-
-//const fetch = require("node-fetch");
 /* Middleware*/
 //Here we are configuring express to use body-parser as middle-ware.
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -27,7 +25,7 @@ app.use(express.static("dist"));
 
 console.log(__dirname);
 
-// get request
+// allows get requests to be used in app
 
 app.get("/", function (req, res) {
   res.sendFile("dist/index.html");
@@ -39,23 +37,45 @@ app.listen(8081, function () {
   console.log(`Example app listening on port 8081!`);
 });
 
-// app.get("/", function (req, res) {
-//   res.send(mockAPIResponse);
-// });
+// ***  Routes and GET requests ***
 
-// Post route to recieve request  - set up post in client using fetch to send data to this post
-// request holds all data that is involved in request
-// response used to send things back to the client
+// get request with callback - this gets the data required
 
-app.post("/api", async (req, res) => {
-  const response = await fetch(
-    `${baseURL}${API_KEY}&of=json&lang=en&model=general&url=${req.body.url}`
-  );
-  try {
-    const data = await response.json();
-    console.log(data);
-    res.send(data);
-  } catch (error) {
-    console.log("error", error);
-  }
+app.get("/all", (req, res) => {
+  res.send(projectData);
+});
+
+// Post Routes to receive data from API's on clientside
+
+app.post("/geonames", (req, res) => {
+  dataGeonames = {
+    latitude: req.body.latitude,
+    longitude: req.body.longitude,
+    city: req.body.city,
+  };
+  projectData.push(dataGeonames);
+  res.send(projectData);
+});
+
+// WeatherBit Post Route
+
+app.post("/weatherbit", (req, res) => {
+  dataWeatherbit = {
+    high: req.body.high,
+    low: req.body.low,
+    icon: req.body.icon,
+    description: req.body.description,
+  };
+  projectData.push(dataWeatherbit);
+  res.send(projectData);
+});
+
+// Pixabay Post Route
+
+app.post("/pixabay", (req, res) => {
+  dataPixabay = {
+    image: req.body.image,
+  };
+  projectData.push(dataPixabay);
+  res.send(projectData);
 });
