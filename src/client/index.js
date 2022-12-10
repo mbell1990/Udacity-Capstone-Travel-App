@@ -8,6 +8,6 @@ import "./styles/layout.scss";
 function importAll(r) {
   return r.keys().map(r);
 }
-importAll(require.context("./media/weatherbit_icons", false, /\.(svg)$/));
+importAll(require.context("./media/weatherbit_icons", false, /\.(png)$/));
 
 export { performAction };

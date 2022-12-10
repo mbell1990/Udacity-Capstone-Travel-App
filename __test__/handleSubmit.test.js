@@ -5,7 +5,7 @@ import { performAction } from "../src/client/js/formHandler";
 
 describe("Testing the submit functionality", () => {
   // The test() function has two arguments - a string description, and an actual test as a callback function.
-  test("Testing the handleSubmit() function", () => {
+  test("Testing the performAction() function", () => {
     expect(performAction).toBeDefined();
   });
 });

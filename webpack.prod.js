@@ -31,7 +31,7 @@ module.exports = {
             loader: "file-loader",
             options: {
               name: "[name].[ext]",
-              outputPath: "./media/weatherbit_icons",
+              outputPath: "media/weatherbit_icons",
             },
           },
         ],

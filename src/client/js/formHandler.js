@@ -149,11 +149,10 @@ const updateUI = async () => {
       ${allData[allData.length - 2].low}°C`;
     document.getElementById("description").innerHTML = `Description: 
       ${allData[allData.length - 2].description}`;
-    // document.getElementById(
-    //   "weather-icon"
-    // ).src = `https://www.weatherbit.io/static/img/icons/${
-    //   allData[allData.length - 2].icon
-    // }`;
+
+    document.getElementById("weather-icon").src = `../media/weatherbit_icons/${
+      allData[allData.length - 2].icon
+    }.png`;
   } catch (error) {
     console.log("error", error);
   }
